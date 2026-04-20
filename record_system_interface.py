@@ -125,14 +125,13 @@ def student_record_menu():
                     while prompt_user_to_update_course:
                         username = input("Enter Username: ").strip()
                         old_course = input("Enter course to replace: ").strip()
-                        new_course = input("Enter new course: ").strip()
+                        new_course = input("Enter new course (leave empty to delete course): ").strip()
 
                         if not username:
                             print("Error: Username cannot be empty")
                         elif not old_course:
                             print("Error: Old course cannot be empty")
-                        elif not new_course:
-                            print("Error: New course cannot be empty")
+
                         else:
                             result = update_student_course(username, old_course, new_course)
 
