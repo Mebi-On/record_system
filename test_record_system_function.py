@@ -3,7 +3,7 @@ from record_system_functions import *
 
 
 class TestRecordSystemFunction(unittest.TestCase):
-    dict = {}
+    student_dict = {}
 
     def setUp(self):
         student_dict.clear()

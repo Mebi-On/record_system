@@ -1,7 +1,7 @@
 from record_system_functions import *
 
-dict = {}
-dict.clear()
+student_dict = {}
+student_dict.clear()
 
 def student_record_menu():
     continue_main_loop = True
