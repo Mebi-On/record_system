@@ -4,32 +4,32 @@ import courses_enum
 
 from student_class import *
 
-dict = {}
+student_dict = {}
 def add_student(name, age, course, zip, city, username):
 
     course = course.title()
     address = address_class.Address(zip, city)
 
-    if username not in dict:
+    if username not in student_dict:
         if course in courses_enum.Courses:
             course = course.upper().replace(" ", "")
             student_info = student_class.Student(name, age, courses_enum.Courses[course], address)
-            dict[username] = student_info.student_info()
-            return dict[username]
+            student_dict[username] = student_info.student_info()
+            return student_dict[username]
 
     return None
 
 def display_student_record(username):
-    if username in dict:
-        return dict[username]
+    if username in student_dict:
+        return student_dict[username]
     return None
 
 def display_student_courses(username):
 
-    if username in dict:
+    if username in student_dict:
         course_string = ""
 
-        for index, courses in enumerate(dict[username]["course"]):
+        for index, courses in enumerate(student_dict[username]["course"]):
             if index > 0:
                 course_string += ", "
             course_string += courses
@@ -43,9 +43,9 @@ def add_new_course(username, course):
     course = course.upper().replace(" ", "")
     course = courses_enum.Courses[course].value
 
-    if username in dict and course not in dict[username]["course"]:
-            dict[username]["course"].add(course)
-            return dict[username]
+    if username in student_dict and course not in student_dict[username]["course"]:
+            student_dict[username]["course"].add(course)
+            return student_dict[username]
 
     return None
 
@@ -57,42 +57,42 @@ def update_student_course(username, course_to_be_updated, new_course):
     if new_course != "":
         new_course = courses_enum.Courses[new_course].value
 
-    if username in dict:
-        if course in dict[username]["course"]:
-            dict[username]["course"].remove(course)
-            if new_course in dict[username]["course"]:
+    if username in student_dict:
+        if course in student_dict[username]["course"]:
+            student_dict[username]["course"].remove(course)
+            if new_course in student_dict[username]["course"]:
                 return None
             if new_course != "":
-                dict[username]["course"].add(new_course)
-            return dict[username]
+                student_dict[username]["course"].add(new_course)
+            return student_dict[username]
 
         return None
 
     return None
 
 def display_student_zip(username):
-    if username in dict:
-        return dict[username]["address"]["zip_code"]
+    if username in student_dict:
+        return student_dict[username]["address"]["zip_code"]
     return None
 
 def display_student_city (username):
-    if username in dict:
-        return dict[username]["address"]["city"]
+    if username in student_dict:
+        return student_dict[username]["address"]["city"]
     return None
 
 def number_of_students():
-    return len(dict)
+    return len(student_dict)
 
 def update_student_record(username, field_to_update, new_value):
     field_to_update = field_to_update.lower()
-    if username in dict:
-        if field_to_update in dict[username]:
-            dict[username][field_to_update] = new_value
+    if username in student_dict:
+        if field_to_update in student_dict[username]:
+            student_dict[username][field_to_update] = new_value
 
         if field_to_update == "city" or field_to_update == "zip_code":
-            dict[username]["address"][field_to_update] = new_value
+            student_dict[username]["address"][field_to_update] = new_value
 
-        return dict[username]
+        return student_dict[username]
     return None
 #
 # def is_valid_input(user_number):

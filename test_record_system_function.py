@@ -6,7 +6,7 @@ class TestRecordSystemFunction(unittest.TestCase):
     dict = {}
 
     def setUp(self):
-        dict.clear()
+        student_dict.clear()
 
     def test_add_new_student_to_dictionary(self):
         actual = add_student("John Doe", 23, "Math", 112, "Lagos", "johnDoe1")
@@ -16,7 +16,7 @@ class TestRecordSystemFunction(unittest.TestCase):
             "course" : {"Math"},
             "address" : {'zip_code': 112, 'city': 'Lagos'}}
         self.assertEqual(actual, expected)
-        self.assertIn("johnDoe1", dict)
+        self.assertIn("johnDoe1", student_dict)
 
     def test_add_new_student_to_dictionary_with_already_existing_username(self):
         add_student("John Doe", 23, "Math", 112, "Lagos", "johnDoe1")
@@ -38,13 +38,13 @@ class TestRecordSystemFunction(unittest.TestCase):
             "course" : {"Math"},
             "address" : {'zip_code': 112, 'city': 'Lagos'}}
         self.assertEqual(actual, expected)
-        self.assertIn("johnDoe1", dict)
+        self.assertIn("johnDoe1", student_dict)
 
     def test_display_student_record_of_nonexistent_student(self):
         actual = display_student_record("johnDoe1")
         expected = None
         self.assertEqual(actual, expected)
-        self.assertTrue(len(dict) == 0)
+        self.assertTrue(len(student_dict) == 0)
 
     def test_add_new_course_to_student_record(self):
         add_student("John Doe", 23, "Math", 112, "Lagos", "johnDoe1")
