@@ -1,16 +1,19 @@
 import student_class
+import address_class
+import courses_enum
+
 from student_class import *
 
 dict = {}
 def add_student(name, age, course, zip, city, username):
 
     course = course.title()
-    address = Address(zip, city)
+    address = address_class.Address(zip, city)
 
     if username not in dict:
-        if course in Courses:
+        if course in courses_enum.Courses:
             course = course.upper().replace(" ", "")
-            student_info = student_class.Student(name, age, Courses[course], address)
+            student_info = student_class.Student(name, age, courses_enum.Courses[course], address)
             dict[username] = student_info.student_info()
             return dict[username]
 
@@ -38,7 +41,7 @@ def display_student_courses(username):
 def add_new_course(username, course):
 
     course = course.upper().replace(" ", "")
-    course = Courses[course].value
+    course = courses_enum.Courses[course].value
 
     if username in dict and course not in dict[username]["course"]:
             dict[username]["course"].add(course)
@@ -49,9 +52,9 @@ def add_new_course(username, course):
 def update_student_course(username, course_to_be_updated, new_course):
 
     course = course_to_be_updated.upper().replace(" ", "")
-    course = Courses[course].value
+    course = courses_enum.Courses[course].value
     new_course = new_course.upper().replace(" ", "")
-    new_course = Courses[new_course].value
+    new_course = courses_enum.Courses[new_course].value
 
     if username in dict:
         if course in dict[username]["course"]:

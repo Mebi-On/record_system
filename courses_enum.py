@@ -1,0 +1,23 @@
+from enum import Enum
+
+class Courses(Enum):
+    MATH = "Math"
+    PHYSICS = "Physics"
+    COMPUTERSCIENCE = "Computer Science"
+    BIOLOGY = "Biology"
+    CHEMISTRY = "Chemistry"
+    STATISTICS = "Statistics"
+    ENGLISH = "English"
+    ECONOMICS = "Economics"
+    HISTORY = "History"
+    PHILOSOPHY = "Philosophy"
+    SOCIOLOGY = "Sociology"
+    POLITICALSCIENCE = "Political Science"
+    GEOGRAPHY = "Geography"
+    PSYCHOLOGY = "Psychology"
+    ART = "Art"
+    MUSIC = "Music"
+    ENGINEERING = "Engineering"
+    LAW = "Law"
+    MEDICINE = "Medicine"
+    BUSINESS = "Business"

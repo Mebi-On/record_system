@@ -2,7 +2,6 @@ from record_system_functions import *
 
 dict = {}
 dict.clear()
-# CASE 5 & 8 UNDONE
 
 def student_record_menu():
     continue_main_loop = True
