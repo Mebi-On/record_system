@@ -65,7 +65,7 @@ class TestRecordSystemFunction(unittest.TestCase):
 
     def test_add_new_course_to_student_record_with_nonexistent_username(self):
         add_student("John Doe", 23, "Math", 112, "Lagos", "johnDoe1")
-        actual = add_new_course("johnDoe2", "math")
+        actual = add_new_course("johnDoe2", "English")
         expected = None
         self.assertEqual(actual, expected)
 
@@ -85,6 +85,18 @@ class TestRecordSystemFunction(unittest.TestCase):
         add_new_course("johnDoe1", "Math")
         actual = update_student_course("johnDoe1", "Math", "English")
         expected = None
+        self.assertEqual(actual, expected)
+
+    def test_delete__coursse_with_update_course_functione(self):
+        add_student("John Doe", 23, "English", 112, "Lagos", "johnDoe1")
+        add_new_course("johnDoe1", "Math")
+        actual = update_student_course("johnDoe1", "Math", "")
+        expected = {
+            "name" : "John Doe",
+            "age" : 23,
+            "course" : {"English"},
+            "address" : {'zip_code': 112, 'city': 'Lagos'}
+        }
         self.assertEqual(actual, expected)
 
     def test_update_course_on_student_record_with_nonexistent_username(self):

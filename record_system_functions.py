@@ -54,14 +54,15 @@ def update_student_course(username, course_to_be_updated, new_course):
     course = course_to_be_updated.upper().replace(" ", "")
     course = courses_enum.Courses[course].value
     new_course = new_course.upper().replace(" ", "")
-    new_course = courses_enum.Courses[new_course].value
+    if new_course != "":
+        new_course = courses_enum.Courses[new_course].value
 
     if username in dict:
         if course in dict[username]["course"]:
             dict[username]["course"].remove(course)
             if new_course in dict[username]["course"]:
                 return None
-            elif new_course != "":
+            if new_course != "":
                 dict[username]["course"].add(new_course)
             return dict[username]
 
